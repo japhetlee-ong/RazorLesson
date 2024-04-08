@@ -1,0 +1,100 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+@model List<ShoppingModel>
+@*@model UserModel*@
+@*@model ProductsModel*@
+
+<div class="text-center">
+    @*<p>Date Now: @DateTime.Now.ToShortDateString()</p>*@
+
+@*    <!-- Single statement block -->
+    @{
+        var message = "Hello There";
+    }
+    <!-- Inline expression or variable -->
+    <p>The value of the message is: @message</p>
+
+    <!-- Multi-statement block -->
+    @{
+        var greeting = "Welcome to our site!";
+        var weekDay = DateTime.Now.DayOfWeek;
+        var greetingMessage = greeting + " Here in Huston it is: " + weekDay;
+    }
+    <p>The greeting is: @greetingMessage</p>*@
+
+    <!--IF STATEMENTS/CONDITIONALS-->
+@*    @{
+        var greeting = "";
+        if(DateTime.Now.Hour > 12)
+        {
+            greeting = "Good Evening";
+        }
+        else
+        {
+            greeting = "Good Morning";
+        }
+    }
+
+    <p>@greeting</p>*@
+
+    <!--LOOPING STATEMENTS-->
+@*    @{
+        string[] items = {"Test1", "Test2", "Test3", "Test4" };
+    }
+    <ul>
+        @{
+            foreach(var item in items)
+            {
+                <li>@item</li>
+            }
+        }
+    </ul>*@
+
+    <!--WITH MODEL-->
+@*    <ul>
+        @foreach (var item in Model)
+        {
+            <li>@item.Name - @item.Amount</li>
+        }
+    </ul>*@
+
+
+    <!--HTML FORM WITH SELECT, LABEL, INPUT-->
+@*    @using (Html.BeginForm("Create", "Home", FormMethod.Post))
+    {
+        <div class="form-group">
+            @Html.LabelFor(m => m.FirstName)
+            @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.LastName)
+            @Html.TextBoxFor(m => m.LastName, new { @class = "form-control" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.CountryList)
+            @Html.DropDownListFor(m => m.SelectedCountry, new SelectList(Model.CountryList, "Name", "Name"), "Select Country", new { @class = "form-control" })
+        </div>
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+    }*@
+
+@*    @using (Html.BeginForm("Save", "Home", FormMethod.Post))
+    {
+        <div class="form-group">
+            @Html.LabelFor(m => m.Description)
+            @Html.TextAreaFor(model => model.Description, new { @class = "form-control", rows = "4" })
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+    }*@
+
+    <div>
+        <!-- Render the partial view here -->
+        @await Html.PartialAsync("_MyShoppingList", Model)
+    </div>
+
+
+</div>
